@@ -1,0 +1,52 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Precio</th>
+        <th></th>
+        <th>Comprar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let phone of phones"
+        [ngClass]="{ inoffert: phone.inOffert, sin: phone.stock == 0 }"
+      >
+        <td>
+          <img
+            class="icon img-thumbnail"
+            [src]="phone.image"
+            [alt]="phone.model"
+          />
+        </td>
+        <td>{{ phone.brand }}</td>
+        <td>{{ phone.model }}</td>
+        <td>{{ phone.price | currency }}</td>
+        <td>
+          <span class="badge text-bg-dark" *ngIf="phone.stock == 0"
+            >SIN STOCK</span
+          >
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-dark"
+            (click)="downQuantity(phone)"
+          >
+            -
+          </button>
+          <input type="text" [(ngModel)]="phone.quantity" />
+          <button
+            type="button"
+            class="btn btn-sm btn-outline-dark"
+            (click)="upQuantity(phone)"
+          >
+            +
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
