@@ -42,13 +42,8 @@ export class PhoneListComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  upQuantity(phone:Phone):void{
-    if (phone.quantity<phone.stock)
-    phone.quantity++;
-  }
-  downQuantity(phone:Phone):void{
-    if (phone.quantity >0)
-    phone.quantity--;
+  maxReached(m: string) {
+    alert(m);
   }
 }
 

@@ -8,13 +8,15 @@ import { PhoneCartComponent } from './phone-cart/phone-cart.component';
 import { PhoneHomeComponent } from './phone-home/phone-home.component';
 import { PhoneAboutComponent } from './phone-about/phone-about.component';
 import { FormsModule } from '@angular/forms';
+import { InputIntComponent } from './input-int/input-int.component';
 @NgModule({
   declarations: [
     AppComponent,
     PhoneListComponent,
     PhoneCartComponent,
     PhoneHomeComponent,
-    PhoneAboutComponent
+    PhoneAboutComponent,
+    InputIntComponent
   ],
   imports: [
     BrowserModule,

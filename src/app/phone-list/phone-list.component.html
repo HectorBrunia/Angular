@@ -15,36 +15,16 @@
         [ngClass]="{ inoffert: phone.inOffert, sin: phone.stock == 0 }"
       >
         <td>
-          <img
-            class="icon img-thumbnail"
-            [src]="phone.image"
-            [alt]="phone.model"
-          />
+          <img class="icon img-thumbnail"[src]="phone.image" [alt]="phone.model"/>
         </td>
         <td>{{ phone.brand }}</td>
         <td>{{ phone.model }}</td>
         <td>{{ phone.price | currency }}</td>
         <td>
-          <span class="badge text-bg-dark" *ngIf="phone.stock == 0"
-            >SIN STOCK</span
-          >
+          <span class="badge text-bg-dark" *ngIf="phone.stock == 0">SIN STOCK</span>
         </td>
         <td>
-          <button
-            type="button"
-            class="btn btn-sm btn-outline-dark"
-            (click)="downQuantity(phone)"
-          >
-            -
-          </button>
-          <input type="text" [(ngModel)]="phone.quantity" />
-          <button
-            type="button"
-            class="btn btn-sm btn-outline-dark"
-            (click)="upQuantity(phone)"
-          >
-            +
-          </button>
+          <app-input-int [(quantity)]="phone.quantity" [max]="phone.stock" *ngIf="phone.stock" (maxReached)="maxReached($event)"></app-input-int>
         </td>
       </tr>
     </tbody>
