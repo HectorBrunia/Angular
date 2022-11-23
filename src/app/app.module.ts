@@ -9,6 +9,7 @@ import { PhoneHomeComponent } from './phone-home/phone-home.component';
 import { PhoneAboutComponent } from './phone-about/phone-about.component';
 import { FormsModule } from '@angular/forms';
 import { InputIntComponent } from './input-int/input-int.component';
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { InputIntComponent } from './input-int/input-int.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

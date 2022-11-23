@@ -25,7 +25,7 @@
         </td>
         <td>
           <app-input-int [(quantity)]="phone.quantity" [max]="phone.stock" *ngIf="phone.stock" (maxReached)="maxReached($event)"></app-input-int>
-        </td>
+          <button *ngIf="phone.stock" type="button" class="btn btn-outline-dark" (click)="addToCart(phone)">Comprar</button>
       </tr>
     </tbody>
   </table>

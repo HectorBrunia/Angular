@@ -1,1 +1,7 @@
-<p>phone-cart works!</p>
+<h3>Carrito de compras!!</h3>
+<ul>
+    <li *ngFor=" let phone of cartList$ |async">
+        {{phone.model}}:{{phone.quantity}} 
+        <button  type="button" class="btn btn-outline-danger" (click)="deleteToCart(phone)">eliminar</button>
+    </li>
+</ul>

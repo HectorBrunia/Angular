@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PhoneCartService } from '../phone-cart.service';
+import { PhoneDataService } from '../phone-data.service';
 import { Phone } from './phone';
 
 @Component({
@@ -7,43 +9,25 @@ import { Phone } from './phone';
   styleUrls: ['./phone-list.component.scss']
 })
 export class PhoneListComponent implements OnInit {
-  phones : Phone[] = [
-    {
-    brand:"Samsung",
-    model:"Galaxy A32",
-    price: 100000 ,
-    stock:10,
-    image: "assets/img/galaxy A32.jpg",
-    inOffert: true,
-    quantity:0,
-  },
-  {
-    brand:"Motorola",
-    model:"Edge 30pro",
-    price: 80000 ,
-    stock:10,
-    image: "assets/img/Edge 30pro.jpg",
-    inOffert: false,
-    quantity:0,
-  },
-  {
-    brand:"Apple",
-    model:"IPhone 13pro max",
-    price: 	200000 ,
-    stock:0,
-    image: "assets/img/IPhone 13pro max.jpg",
-    inOffert: false,
-    quantity:0,
-  }
+  phones : Phone[] = [];
 
-]
-  constructor() { }
+  constructor(
+    private cart:PhoneCartService,
+    private phoneDataService : PhoneDataService) { }
 
   ngOnInit(): void {
+    this.phoneDataService.getAll().subscribe(phones =>this.phones = phones)
+  }
+
+  addToCart(phone:Phone):void{
+    this.cart.addToCart(phone)
+    phone.stock-= phone.quantity;
+    phone.quantity=0;
   }
 
   maxReached(m: string) {
     alert(m);
   }
+
 }
 
