@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PhoneCartService } from '../phone-cart.service';
+import { PhoneDataService } from '../phone-data.service';
 import { Phone } from '../phone-list/phone';
 
 @Component({
@@ -10,10 +11,11 @@ import { Phone } from '../phone-list/phone';
 })
 export class PhoneCartComponent implements OnInit {
 
-  cartList$: Observable<Phone[]>;
+  cartList!: Phone[];
 
-  constructor(private cart:PhoneCartService) { 
-    this.cartList$ = cart.cartList.asObservable();
+  constructor(
+    private cart:PhoneCartService) { 
+      cart.cartList.subscribe((observable: Phone[]) => this.cartList=observable);
   }
 
   ngOnInit(): void {
@@ -24,4 +26,13 @@ export class PhoneCartComponent implements OnInit {
     phone.stock+= phone.quantity;
     phone.quantity=0;
   }
+
+  total():number{
+    let total=0
+    for (let i in this.cartList) {
+        total+=this.cartList[i].price*this.cartList[i].quantity;
+    }
+    return total;
+  }
+
 }

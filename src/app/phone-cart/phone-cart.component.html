@@ -1,7 +1,16 @@
 <h3>Carrito de compras!!</h3>
-<ul>
-    <li *ngFor=" let phone of cartList$ |async">
-        {{phone.model}}:{{phone.quantity}} 
+<div class="row">
+    <div class="card " style="width: 18rem;" *ngFor=" let phone of cartList">
+        <img [src]="phone.image" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{phone.model}}</h5>
+            <p class="card-text text-bg-secondary ">{{phone.price |currency}}x{{phone.quantity}}</p>
+        </div>
         <button  type="button" class="btn btn-outline-danger" (click)="deleteToCart(phone)">eliminar</button>
-    </li>
-</ul>
+    </div> 
+</div>
+<div>
+    <span class="text-bg-secondary p-3">Total:{{total() | currency}}</span>
+</div>
+
+

@@ -16,7 +16,7 @@ export class PhoneCartService {
   addToCart(phone: Phone) {
     let item = this._cartList.find((v1)=>v1.model==phone.model);
     if(!item)
-      this._cartList.push({ ... phone});
+      this._cartList.push({... phone});
     else{
       item.quantity += phone.quantity;
     }

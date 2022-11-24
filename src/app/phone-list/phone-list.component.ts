@@ -10,24 +10,20 @@ import { Phone } from './phone';
 })
 export class PhoneListComponent implements OnInit {
   phones : Phone[] = [];
-
+  SlecetedPhone!:Phone;
   constructor(
-    private cart:PhoneCartService,
     private phoneDataService : PhoneDataService) { }
 
   ngOnInit(): void {
     this.phoneDataService.getAll().subscribe(phones =>this.phones = phones)
   }
 
-  addToCart(phone:Phone):void{
-    this.cart.addToCart(phone)
-    phone.stock-= phone.quantity;
-    phone.quantity=0;
+  selectPhone(phone:Phone){
+    this.SlecetedPhone=phone;
   }
 
   maxReached(m: string) {
     alert(m);
   }
-
 }
 
