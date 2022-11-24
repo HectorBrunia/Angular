@@ -15,6 +15,10 @@ export class PhoneDataService {
     return this.http.get<Phone[]>(URL)
            .pipe(
             tap((phones: Phone[])=> phones.forEach(phone => phone.quantity=0))
-           );
+          );
   }
+
+  /*public updatePhone(phone:Phone):Observable<Phone>{
+    return this.http.put<Phone>(URL,phone);
+  }*/
 }
