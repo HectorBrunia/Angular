@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PhoneCartService } from '../phone-cart.service';
+import { PhoneDataService } from '../phone-data.service';
 import { Phone } from '../phone-list/phone';
 
 @Component({
@@ -9,7 +10,9 @@ import { Phone } from '../phone-list/phone';
 })
 export class PhoneComponent implements OnInit {
 
-  constructor(private cart:PhoneCartService,) { }
+  constructor(
+    private cart:PhoneCartService,
+    private phoneService:PhoneDataService) { }
 
   @Input()phone!: Phone;
 
@@ -17,6 +20,7 @@ export class PhoneComponent implements OnInit {
     this.cart.addToCart(phone)
     phone.stock-= phone.quantity;
     phone.quantity=0;
+    this.phoneService.updatePhone(phone).subscribe(phone => console.log(phone))
   }
 
   maxReached(m: string) {

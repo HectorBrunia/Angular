@@ -2,7 +2,60 @@ div{
     text-align: center;
     margin: 10px;
 }
-span{
+button{
     margin: 5px;
     border: solid black 1px;
+}
+@import 
+url('https://fonts.googleapis.com/css?family=Lato:100&display=swap');
+
+.btn-toBuy {
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid black;
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+.btn-toBuy:hover {
+  transition: 1s ease-in-out;
+  background: black;
+}
+
+.btn-toBuy span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
+}
+/* Google Fonts */
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+/* Global */
+.line-1{
+    position: relative;
+    top: 50%;  
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255,255,255,.75);
+    font-size: 180%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 24em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
 }

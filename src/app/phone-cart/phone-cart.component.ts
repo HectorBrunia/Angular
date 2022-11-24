@@ -14,17 +14,18 @@ export class PhoneCartComponent implements OnInit {
   cartList!: Phone[];
 
   constructor(
-    private cart:PhoneCartService) { 
+    private cart:PhoneCartService,
+    private phoneService:PhoneDataService) { 
       cart.cartList.subscribe((observable: Phone[]) => this.cartList=observable);
   }
 
   ngOnInit(): void {
   }
 
-  deleteToCart(phone:Phone):void{
-    this.cart.deleteToCart(phone)
-    phone.stock+= phone.quantity;
-    phone.quantity=0;
+  deleteToCart(newPhone:Phone):void{
+    this.cart.deleteToCart(newPhone)
+    newPhone.quantity=0;
+    this.phoneService.updatePhone(newPhone).subscribe(phone => console.log(phone))
   }
 
   total():number{
@@ -35,4 +36,11 @@ export class PhoneCartComponent implements OnInit {
     return total;
   }
 
+  toBuy():void{
+    this.cartList.forEach(phone => {
+      phone.stock-=phone.quantity;
+      this.phoneService.updatePhone(phone).subscribe(phone => console.log(phone))
+    });
+    this.cart.empyCart();
+  }
 }

@@ -1,5 +1,5 @@
-<h3>Carrito de compras!!</h3>
-<div class="row">
+<h2>Carrito de compras 🛒</h2>
+<div class="row" *ngIf="total() != 0">
     <div class="card " style="width: 18rem;" *ngFor=" let phone of cartList">
         <img [src]="phone.image" class="card-img-top">
         <div class="card-body">
@@ -9,8 +9,13 @@
         <button  type="button" class="btn btn-outline-danger" (click)="deleteToCart(phone)">eliminar</button>
     </div> 
 </div>
+<div *ngIf="total() === 0">
+    <p class="line-1 anim-typewriter">AGREGUE ALGO AL CARRITO POR FAVOR</p>
+    <p class="line-1 anim-typewriter">😔</p>
+</div>
+
 <div>
-    <span class="text-bg-secondary p-3">Total:{{total() | currency}}</span>
+    <button type="button" class="btn-toBuy btn btn-outline-dark" (click)="toBuy()" [routerLink]="['/']">Total:{{total() | currency}}</button>
 </div>
 
 

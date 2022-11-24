@@ -1,21 +1,9 @@
-<div class="card" style="width: 18rem;" *ngIf="phone">
-  <img [src]="phone.image" class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">{{ phone.model }}</h5>
-    <p class="card-text">{{ phone.price }}</p>
-    <app-input-int
-      [(quantity)]="phone.quantity"
-      [max]="phone.stock"
-      *ngIf="phone.stock"
-      (maxReached)="maxReached($event)"
-    ></app-input-int>
-    <button
-      *ngIf="phone.stock"
-      type="button"
-      class="btn btn-outline-dark"
-      (click)="addToCart(phone)"
-    >
-      Comprar
-    </button>
-  </div>
+<div class="card" style="width: 20rem;" *ngIf="phone">
+    <img [src]="phone.image" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{phone.model}}</h5>
+      <p class="card-text">{{phone.price}}</p>
+      <app-input-int [(quantity)]="phone.quantity" [max]="phone.stock" *ngIf="phone.stock" (maxReached)="maxReached($event)"></app-input-int>
+      <button *ngIf="phone.stock" type="button" class="btn btn-outline-dark" (click)="addToCart(phone)">Comprar</button>
+    </div>
 </div>

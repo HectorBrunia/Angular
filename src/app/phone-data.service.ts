@@ -18,7 +18,7 @@ export class PhoneDataService {
           );
   }
 
-  /*public updatePhone(phone:Phone):Observable<Phone>{
-    return this.http.put<Phone>(URL,phone);
-  }*/
+  public updatePhone(phone:Phone):Observable<Phone>{
+    return this.http.put<Phone>(URL+'/'+phone.id,phone)
+  }
 }

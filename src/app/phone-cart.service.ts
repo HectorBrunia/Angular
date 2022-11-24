@@ -28,4 +28,9 @@ export class PhoneCartService {
     this._cartList = this._cartList.filter((item) => item !== phone)
     this.cartList.next(this._cartList);
   }
+
+  empyCart(){
+    this._cartList=[];
+    this.cartList.next(this._cartList);
+  }
 }
