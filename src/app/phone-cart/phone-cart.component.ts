@@ -43,4 +43,6 @@ export class PhoneCartComponent implements OnInit {
     });
     this.cart.empyCart();
   }
+
+  
 }
